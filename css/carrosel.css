@@ -1,0 +1,16 @@
+#carrossel {
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#miniatura {
+    display: flex;
+    justify-content: center;
+}
+
+.imgs {
+    margin: 0 5px;
+    cursor: pointer;
+}
