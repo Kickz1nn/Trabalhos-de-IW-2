@@ -1,39 +1,101 @@
-// Array com os caminhos das suas imagens
-var imagens = ["imgs/banana.png", "imgs/kiwi.jpg", "imgs/maca.png", "imgs/melancia.png", "imgs/uva.png", "imgs/abacaxi.png"];
-var indiceAtual = 0;
-var intervalo;
+// Declaração de algumas variavéis
 
-// Função para mudar a imagem central
-function mudarImagem(indice) {
-  var imagemCentral = document.getElementById('central');
-  imagemCentral.src = imagens[indice];
-  indiceAtual = indice;
+let arrayImagens = ["abacaxi.png", "banana.png", "kiwi.jpg", "maca.jpg", "melancia.png", "uva.png"];
+let intervalId;
+real = true
+window.onload = () => {
+
+    // nomes das imagens com a extensão
+
+    let img = document.getElementsByTagName('img');
+
+    img[0].src = "imgs/" + arrayImagens[0];
+    img[1].src = "imgs/" + arrayImagens[0];
+    img[2].src = "imgs/" + arrayImagens[1];
+    img[3].src = "imgs/" + arrayImagens[2];      
+    img[4].src = "imgs/" + arrayImagens[3];
+    img[5].src = "imgs/" + arrayImagens[4];    
+    img[6].src = "imgs/" + arrayImagens[5];
+
+    if (real) {
+        intervalId = setInterval(Testa, 500);   
+    }
+
+    //Executar função de acordo com o evento ocorrido
+
+    img[1].addEventListener('mouseover', stopInterval);
+    img[1].addEventListener('mouseout', startInterval);     
+    img[2].addEventListener('mouseover', stopInterval);
+    img[2].addEventListener('mouseout', startInterval);     
+    img[3].addEventListener('mouseover', stopInterval);
+    img[3].addEventListener('mouseout', startInterval);     
+    img[4].addEventListener('mouseover', stopInterval);
+    img[4].addEventListener('mouseout', startInterval);     
+    img[5].addEventListener('mouseover', stopInterval);
+    img[5].addEventListener('mouseout', startInterval);     
 }
 
-// Função para iniciar o carrossel
-function iniciarCarrossel() {
-  intervalo = setInterval(function() {
-    indiceAtual = (indiceAtual + 1) % imagens.length;
-    mudarImagem(indiceAtual);
-  }, 3000); // Troca a imagem a cada 3 segundos
+
+//contador de segundos
+
+//função q troca a imagem a cada segundo
+let cont = 1;
+function Testa(){
+    let img = document.getElementsByTagName('img');
+    img[0].src = "imgs/" + arrayImagens[cont];
+    cont++; 
+    if(cont == 6){
+        cont = 0
+    }
+}
+function stopInterval() {
+    clearInterval(intervalId);
 }
 
-// Função para parar o carrossel
-function pararCarrossel() {
-  clearInterval(intervalo);
+function startInterval() {
+    if (!real) {
+        intervalId = setInterval(Testa, 3000);
+        real = true;
+    }
+}
+function img01() {
+    let img = document.getElementsByTagName('img');
+    img[0].src = "imgs/" + arrayImagens[0];
+    real = false
+    stopInterval();
+
+  
+}   
+function img02() {
+    let img = document.getElementsByTagName('img');
+    img[0].src = "imgs/" + arrayImagens[1];
+    real = false
+    stopInterval();
 }
 
-window.onload = function() {
-  // Inicia o carrossel quando a página é carregada
-  iniciarCarrossel();
+function img03() {
+    let img = document.getElementsByTagName('img');
+    img[0].src = "imgs/" + arrayImagens[2];
+    real = false
+    stopInterval();
 
-  // Adiciona evento de mouseover para as miniaturas
-  var miniaturas = document.querySelectorAll('.miniatura');
-  miniaturas.forEach(function(miniatura, indice) {
-    miniatura.onmouseover = function() {
-      pararCarrossel();
-      mudarImagem(indice);
-    };
-    miniatura.onmouseout = iniciarCarrossel;
-  });
-};
+}
+function img04() {
+    let img = document.getElementsByTagName('img');
+    img[0].src = "imgs/" + arrayImagens[3];
+    real = false
+    stopInterval();
+
+}
+function img05() {
+    let img = document.getElementsByTagName('img');
+    img[0].src = "imgs/" + arrayImagens[4];
+    real = false;
+    stopInterval();
+}
+function img06() {
+    let img = document.getElementsByTagName('img');
+    img[0].src = "imgs/" + arrayImagens[5];
+    real = false
+    stopInterval();
+}
